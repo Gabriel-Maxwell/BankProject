@@ -52,7 +52,7 @@ public class Transaction {
     @Override
     public String toString() {
         return  
-                "\nOperação: " + transactionType +
+                "\nOperacao: " + transactionType +
                 ",\nData e Hora: " + FormatterUtils.formatValueToString(dateTime) +
                 ",\nValor: " + FormatterUtils.formatValueToString(value)  +
                 ",\nSaldo Inicial: " + FormatterUtils.formatValueToString(initialBalance) +
