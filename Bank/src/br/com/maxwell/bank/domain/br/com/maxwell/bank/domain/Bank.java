@@ -13,7 +13,7 @@ public class Bank {
 
     private List<Account> customerAccountsList;
     private List<Customer> customerList;
-    private List<Double> extract;
+   
 
     public Bank() {
         this.customerList = new ArrayList<>();
@@ -22,11 +22,7 @@ public class Bank {
 
     public void addCustomer(Customer customer) {
         this.customerList.add(customer);
-    }
-
-    public void addExtract(Double extract) {
-        this.extract.add(extract);
-    }
+    }   
 
     public void addAccountCustomer(Account account) {
         this.customerAccountsList.add(account);
@@ -38,10 +34,6 @@ public class Bank {
 
     public List<Customer> getCustomerList() {
         return customerList;
-    }
-
-    public List<Double> getExtract() {
-        return extract;
     }
 
     public Customer findCustomerByDocumentNumber(String documentNumber) {
@@ -167,13 +159,13 @@ public class Bank {
 
     private static void showExtract(Scanner sc, Bank bank) {
         Optional<Account> oppAccount = validateAccountAndCustomer(sc, bank);
-        String date = FormatterUtils.formatDateToString(LocalDateTime.now());
+        String date = FormatterUtils.formatValueToString(LocalDateTime.now());
         System.out.println(date);
         if (oppAccount.isPresent()) {
-            System.out.println("O Saldo atual e: R$ " + oppAccount.get().getBalance());
-            System.out.println("O limite atual e: R$ " + oppAccount.get().getLimit());
+            System.out.println("O Saldo atual e: R$ " + FormatterUtils.formatValueToString(oppAccount.get().getBalance()));
+            System.out.println("O limite atual e: R$ " + FormatterUtils.formatValueToString(oppAccount.get().getLimit()));
+            System.out.println(oppAccount.get().getTransactions());
         }
-        //  System.out.println(bank.getExtract());
     }
 
     private static void showAllAccountCustomers(Bank bank) {
@@ -203,4 +195,4 @@ public class Bank {
         }
         return Optional.of(account);
     }
-}//new branch
+}
